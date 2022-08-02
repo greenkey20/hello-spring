@@ -1,0 +1,28 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+group = 'com.greenkey20'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+// 2022.8.1(월) 19h 프로젝트 환경 설정
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // html 만들어주는 template engine
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // 내가 세팅은 안 했지만 자동으로 들어온 것
+
+	/* 단, External Libraries 폴더 보면 당겨온 것 많음 -> 요새 웹애플리케이션 만드려면 이 정도는 기본으로 가져와서 시작함(추후 빌드해보면 수십MB)
+	Gradle, Maven 같은 빌드 도구들은 의존관계 관리도 해줌 -> 내가 필요로 하는 라이브러리 이외에 그 라이브러리가 의존하고 있는 것까지(+그래서 core까지) 다 당겨옴
+	 */
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
